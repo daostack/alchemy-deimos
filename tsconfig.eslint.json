@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "__tests__/**/*.tsx",
+    "__tests__/**/*.ts",
+    "__tests__/**/*.js",
+    "test/**/*.ts",
+    "test/**/*.js",
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/**/*.scss.d.ts"
+  ]
+  }
