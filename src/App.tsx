@@ -15,6 +15,19 @@ import SendTestTxOnRinkeby from "./components/SendTestTxOnRinkeby";
 
 import styles from "./styles";
 
+class TestButton extends React.Component {
+  render() {
+    let buttonStyle;
+    if (this.props.style === "todo") {
+      buttonStyle = styles.buttonRed;
+    } else {
+      buttonStyle = styles.button;
+    }
+    return <Button
+      buttonStyle={buttonStyle}
+      {...this.props}></Button>;
+  }
+}
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -26,47 +39,53 @@ class HomeScreen extends React.Component {
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Try some of the following actions...</Text>
         <ScrollView style={styles.scrollView}>
-          <Button buttonStyle={styles.button}
+          <TestButton
             title="show latest blocknumber from mainnet"
             onPress={() => this.props.navigation.navigate("ShowLatestBlocknumber")}
           />
 
-          <Button buttonStyle={styles.button}
+          <TestButton
             title="show latest blocknumber from mainnet (using wsprovider)"
             onPress={() => this.props.navigation.navigate("ShowLatestBlocknumberWsProvider")}
           />
 
-          <Button buttonStyle={styles.button}
+          <TestButton
             title="send a transaction to rinkeby (from test account..)"
             onPress={() => this.props.navigation.navigate("SendTestTxOnRinkeby")}
           />
 
-          <Button buttonStyle={styles.button}
+          <TestButton
             title="get some data from the subgraph"
             onPress={() => this.props.navigation.navigate("SubgraphGet")}
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] subscribe to data from the subgraph"
             onPress={() => this.props.navigation.navigate("SubgraphGet")}
           />
 
-          <Button buttonStyle={styles.button}
+          <TestButton
             title="get data from IPFS"
             onPress={() => this.props.navigation.navigate("IPFSGet")}
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] save data to IPFS"
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] create an Arc instance and do some stuff with it"
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] connect to a wallet and send a tx"
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] connect to a wallet and sign a message"
           />
-          <Button buttonStyle={styles.button}
+          <TestButton
+            style="todo"
             title="[TODO] connect to a wallet and sign a message"
           />
         </ScrollView>
