@@ -1,109 +1,92 @@
 import React from "react";
 import {
-  SafeAreaView,
-  StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
 } from "react-native";
-import {Colors} from "react-native/Libraries/NewAppScreen";
-import AppHeader from "./AppHeader";
-import ProposalList from "./components/ProposalList";
-// import {initializeArc} from "./arc";
+import { Button } from "react-native-elements";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import SubgraphGet from "./components/SubgraphGet";
+import IPFSGet from "./components/IPFSGet";
+import ShowLatestBlocknumber from "./components/ShowLatestBlocknumber";
+import ShowLatestBlocknumberWsProvider from "./components/ShowLatestBlocknumberWsProvider";
+import SendTestTxOnRinkeby from "./components/SendTestTxOnRinkeby";
 
-export class App extends React.Component<{}, {arcIsInitialized: boolean; retryingArc: boolean}> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      arcIsInitialized: false,
-      retryingArc: false,
-    };
-  }
+import styles from "./styles";
 
-  public async componentDidMount(): Promise<void> {
-    // Do this here because we need to have initialized Arc first.  This will
-    // not create a provider for the app, rather will just initialize Arc with a
-    // readonly provider with no account, internal only to it.
-    // initializeArc()
-    //   .then(async (success: boolean) => {
-    //     while (!success) {
-    //       this.setState({retryingArc: true});
-    //       await sleep(5000);
-    //       success = await initializeArc();
-    //     }
-    //     this.setState({arcIsInitialized: true});
-    //   })
-    //   .catch(
-    //     (err): void => {
-    //       // eslint-disable-next-line no-console
-    //       console.log(err);
-    //     },
-    //   );
-  }
 
-  public render(): RenderOutput {
-    const usingHermes =
-      typeof HermesInternal === "object" && HermesInternal !== null;
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: "Deimos",
+  };
+
+  render() {
     return (
-      <>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            <AppHeader />
-            {!usingHermes ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Engine: Hermes</Text>
-              </View>
-            )}
-          </ScrollView>
-          <ProposalList style={styles.body} />
-        </SafeAreaView>
-      </>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Try some of the following actions...</Text>
+        <ScrollView style={styles.scrollView}>
+          <Button buttonStyle={styles.button}
+            title="show latest blocknumber from mainnet"
+            onPress={() => this.props.navigation.navigate("ShowLatestBlocknumber")}
+          />
+
+          <Button buttonStyle={styles.button}
+            title="show latest blocknumber from mainnet (using wsprovider)"
+            onPress={() => this.props.navigation.navigate("ShowLatestBlocknumberWsProvider")}
+          />
+
+          <Button buttonStyle={styles.button}
+            title="send a transaction to rinkeby (from test account..)"
+            onPress={() => this.props.navigation.navigate("SendTestTxOnRinkeby")}
+          />
+
+          <Button buttonStyle={styles.button}
+            title="get some data from the subgraph"
+            onPress={() => this.props.navigation.navigate("SubgraphGet")}
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] subscribe to data from the subgraph"
+            onPress={() => this.props.navigation.navigate("SubgraphGet")}
+          />
+
+          <Button buttonStyle={styles.button}
+            title="get data from IPFS"
+            onPress={() => this.props.navigation.navigate("IPFSGet")}
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] save data to IPFS"
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] create an Arc instance and do some stuff with it"
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] connect to a wallet and send a tx"
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] connect to a wallet and sign a message"
+          />
+          <Button buttonStyle={styles.button}
+            title="[TODO] connect to a wallet and sign a message"
+          />
+        </ScrollView>
+
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const AppNavigator = createStackNavigator(
+  {
+    Home: { screen: HomeScreen},
+    SubgraphGet,
+    ShowLatestBlocknumber,
+    ShowLatestBlocknumberWsProvider,
+    SendTestTxOnRinkeby,
+    IPFSGet,
   },
-  engine: {
-    position: "absolute",
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-    fontFamily: "monospace",
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400",
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: "700",
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: "600",
-    padding: 4,
-    paddingRight: 12,
-    textAlign: "right",
-  },
-});
+  {
+    initialRouteName: "Home",
+  });
 
-export default App;
+export default createAppContainer(AppNavigator);

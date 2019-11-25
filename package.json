@@ -1,5 +1,5 @@
 {
-  "name": "reactnativets",
+  "name": "deimos",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,10 +13,18 @@
     "@daostack/client": "^0.2.29",
     "events": "^3.0.0",
     "https-browserify": "^1.0.0",
+    "node-libs-react-native": "^1.0.3",
     "os": "^0.1.1",
     "react": "16.9.0",
     "react-native": "0.61.4",
-    "url": "^0.11.0"
+    "react-native-elements": "^1.2.7",
+    "react-native-gesture-handler": "^1.5.1",
+    "react-native-randombytes": "^3.5.3",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^1.10.3",
+    "vm": "^0.1.0",
+    "web3": "^1.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

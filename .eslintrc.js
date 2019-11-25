@@ -37,7 +37,7 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-use-before-define": "off",
 
-        "react/jsx-no-bind": "warn",
+        /* "react/jsx-no-bind": "warn", */
         /**
          * outright errors
         */

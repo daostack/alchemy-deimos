@@ -15,8 +15,6 @@ module.exports = {
     }),
   },
   resolver: {
-    extraNodeModules: {
-      'https': 'https-browserify',
-    }
+    extraNodeModules: require('node-libs-react-native')
   }
 };
