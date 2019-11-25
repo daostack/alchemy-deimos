@@ -8,6 +8,7 @@ import { Button } from "react-native-elements";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import SubgraphGet from "./components/SubgraphGet";
+import SubgraphSubscribe from "./components/SubgraphSubscribe";
 import IPFSGet from "./components/IPFSGet";
 import ShowLatestBlocknumber from "./components/ShowLatestBlocknumber";
 import ShowLatestBlocknumberWsProvider from "./components/ShowLatestBlocknumberWsProvider";
@@ -20,6 +21,8 @@ class TestButton extends React.Component {
     let buttonStyle;
     if (this.props.style === "todo") {
       buttonStyle = styles.buttonRed;
+    } else if (this.props.style === "inprogress") {
+      buttonStyle = styles.buttonOrange;
     } else {
       buttonStyle = styles.button;
     }
@@ -59,12 +62,13 @@ class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate("SubgraphGet")}
           />
           <TestButton
-            style="todo"
-            title="[TODO] subscribe to data from the subgraph"
-            onPress={() => this.props.navigation.navigate("SubgraphGet")}
+            style="inprogress"
+            title="subscribe to data from the subgraph"
+            onPress={() => this.props.navigation.navigate("SubgraphSubscribe")}
           />
 
           <TestButton
+            style="inprogress"
             title="get data from IPFS"
             onPress={() => this.props.navigation.navigate("IPFSGet")}
           />
@@ -99,6 +103,7 @@ const AppNavigator = createStackNavigator(
   {
     Home: { screen: HomeScreen},
     SubgraphGet,
+    SubgraphSubscribe,
     ShowLatestBlocknumber,
     ShowLatestBlocknumberWsProvider,
     SendTestTxOnRinkeby,
