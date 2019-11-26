@@ -32,8 +32,9 @@ TBD
 | sign and send a transaction|  &#9745; | &#9744;  
 | read data from subgraph |  &#9745; | &#9744;  
 | subscribe to data from subgraph (websocket)|  &#9745; | &#9744;  
-|  read data from IPFS |  &#9744; | &#9744;  
-|  write data to IPFS |  &#9744; | &#9744;  
-|  create an Arc instance |  &#9744; | &#9744;  
-|  connect to a wallet and send a tx |  &#9744; | &#9744;  
-| connect to a wallet and sign a  message |  &#9744; | &#9744;  
+| read data from IPFS |  &#9744; | &#9744;  
+| write data to IPFS |  &#9744; | &#9744;  
+| create an Arc instance |  &#9744; | &#9744;  
+| include portis, sign a tx | &#9744; | &#9744;  
+| connect to a wallet with walletconnect and send a tx |  &#9744; | &#9744;  
+| connect to a wallet with willectconnect and sign a  message |  &#9744; | &#9744;  

@@ -62,7 +62,6 @@ class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate("SubgraphGet")}
           />
           <TestButton
-            style="inprogress"
             title="subscribe to data from the subgraph"
             onPress={() => this.props.navigation.navigate("SubgraphSubscribe")}
           />
