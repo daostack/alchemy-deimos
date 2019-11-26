@@ -67,8 +67,12 @@ class HomeScreen extends React.Component {
           />
 
           <TestButton
-            style="inprogress"
-            title="get data from IPFS"
+            title="get data from IPFS (using fetch)"
+            onPress={() => this.props.navigation.navigate("IPFSGet")}
+          />
+          <TestButton
+            style="todo"
+            title="get data from IPFS (using ipfsclient)"
             onPress={() => this.props.navigation.navigate("IPFSGet")}
           />
           <TestButton
