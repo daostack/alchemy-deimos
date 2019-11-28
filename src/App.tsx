@@ -13,6 +13,10 @@ import IPFSGet from "./components/IPFSGet";
 import ShowLatestBlocknumber from "./components/ShowLatestBlocknumber";
 import ShowLatestBlocknumberWsProvider from "./components/ShowLatestBlocknumberWsProvider";
 import SendTestTxOnRinkeby from "./components/SendTestTxOnRinkeby";
+import Portis from "./components/Portis";
+import WalletConnectTest from "./components/WalletConnectTest";
+import Web3ConnectTest from "./components/Web3ConnectTest";
+import FortmaticTest from "./components/FortmaticTest";
 
 import styles from "./styles";
 
@@ -73,27 +77,47 @@ class HomeScreen extends React.Component {
           <TestButton
             style="todo"
             title="get data from IPFS (using ipfsclient)"
-            onPress={() => this.props.navigation.navigate("IPFSGet")}
           />
           <TestButton
             style="todo"
-            title="[TODO] save data to IPFS"
+            title="save data to IPFS"
           />
           <TestButton
             style="todo"
-            title="[TODO] create an Arc instance and do some stuff with it"
+            title="create an Arc instance and do some stuff with it"
+          />
+
+          <TestButton
+            style="inprogress"
+            title="Portis"
+            onPress={() => this.props.navigation.navigate("Portis")}
+          />
+          <TestButton
+            style="inprogress"
+            title="Fortmatic"
+            onPress={() => this.props.navigation.navigate("FortmaticTest")}
+          />
+          <TestButton
+            style="inprogress"
+            title="WalletConnect"
+            onPress={() => this.props.navigation.navigate("WalletConnectTest")}
+          />
+          <TestButton
+            style="inprogress"
+            title="Web3Connect"
+            onPress={() => this.props.navigation.navigate("Web3ConnectTest")}
           />
           <TestButton
             style="todo"
-            title="[TODO] connect to a wallet and send a tx"
+            title="connect to a wallet and send a tx"
           />
           <TestButton
             style="todo"
-            title="[TODO] connect to a wallet and sign a message"
+            title="connect to a wallet and sign a message"
           />
           <TestButton
             style="todo"
-            title="[TODO] connect to a wallet and sign a message"
+            title="connect to a wallet and sign a message"
           />
         </ScrollView>
 
@@ -111,6 +135,10 @@ const AppNavigator = createStackNavigator(
     ShowLatestBlocknumberWsProvider,
     SendTestTxOnRinkeby,
     IPFSGet,
+    Portis,
+    WalletConnectTest,
+    Web3ConnectTest,
+    FortmaticTest,
   },
   {
     initialRouteName: "Home",
