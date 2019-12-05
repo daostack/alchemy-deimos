@@ -3,31 +3,35 @@ import {
   ScrollView,
   View,
   Text,
+  FlatList,
 } from "react-native";
 import { Button } from "react-native-elements";
 import styles from "../styles";
 
-const LogArea = function(messages) {
-  const text = messages.map((s, i) => <Text key={i}>{s}</Text>);
-  return(
-    <View>{text}
-    </View>
+export const LogArea = function(messages: string[]) {
+  return <FlatList
+    data={messages}
+    renderItem={(item) => Item(item)}
+    keyExtractor={(item, index) => index.toString()}
+  />;
+};
+
+export const Item = (item: any) => {
+  console.log(item);
+  return (
+    <Text>{item.item.toString()}</Text>
   );
 };
 
-export class ActionTest extends React.Component {
+export class ActionTest extends React.Component<null, { messages: string[]}> {
   static navigationOptions = {
-    title: "Get some data from the subgraph",
+    title: "... provide title ...",
   };
   state = {messages: []};
-  description = "A description";
+  description = ''
 
-  public log = (msg) => {
-    const messages = this.state.messages;
-    console.log(messages);
-    messages.push(msg);
-    console.log(messages);
-    this.setState({messages});
+  public log = (msg: string) => {
+    this.setState({messages: this.state.messages + [msg]});
   }
 
   public doit = async () => {
@@ -37,7 +41,7 @@ export class ActionTest extends React.Component {
     this.doit();
   }
 
-  public render(): RenderOutput {
+  public render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>{this.description}</Text>
@@ -45,9 +49,7 @@ export class ActionTest extends React.Component {
           title="do it again.."
           onPress={this.doit}
         />
-        <ScrollView style={styles.scrollView}>
-          {LogArea(this.state.messages)}
-        </ScrollView>
+        <LogArea messages ={this.state.messages} />
       </View>
     );
   }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@daostack/client": "^0.2.34",
     "@portis/web3": "^2.0.0-beta.54",
+    "@types/isomorphic-fetch": "0.0.35",
     "@walletconnect/react-native": "^1.0.0-beta.39",
     "events": "^3.0.0",
     "fortmatic": "^1.0.0",
@@ -44,6 +45,7 @@
     "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "eslint-plugin-import": "^2.18.2",
+    "isomorphic-fetch": "^2.2.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.9.0",
@@ -58,6 +60,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/?!(react-navigation)"
     ]
   }
 }

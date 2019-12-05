@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   button: {
     padding: 15,
     marginVertical: 8,
@@ -22,4 +22,12 @@ export default styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "orange",
   },
+  view: {
+    flex: 1, alignItems: "center", justifyContent: "center"
+  },
+  scrollView: {
+
+  }
 });
+
+export default  styles
